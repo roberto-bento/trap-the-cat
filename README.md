@@ -59,6 +59,32 @@ npx expo start
 * Escaneie o **QR Code** gerado no terminal ou na interface do navegador.
 * Aguarde o carregamento do bundle para iniciar a aplicação.
 
+### Como rodar via Android Studio (Build Nativo)
+
+Como este projeto utiliza **Expo Prebuild** para gerar as pastas nativas, você pode abri-lo e compilá-lo diretamente no Android Studio.
+
+**1. Abra o Android Studio pelo Terminal (Para usuários de NVM no macOS):**
+Para garantir que o Android Studio reconheça o seu Node.js via NVM, feche o Android Studio completamente (`Cmd + Q`) e abra-o pelo seu terminal:
+```bash
+open -a "Android Studio"
+```
+
+**2. Importe o Projeto:**
+No Android Studio, clique em `Open` e selecione a pasta `android` localizada dentro do projeto (`trap-the-cat/react-native-to-android/android`).
+
+**3. Sincronize o Gradle:**
+Aguarde a sincronização inicial. Caso apareça algum aviso sobre a versão do Android Gradle Plugin (AGP), saiba que o projeto já foi adaptado para rodar na versão `8.7.2` (ou compatível com seu IDE).
+
+**4. Compile e instale no dispositivo:**
+Com seu celular conectado via USB (ou um Emulador aberto), clique no botão **Play (Run 'app')** na barra superior do Android Studio.
+
+**5. Inicie o Metro Bundler:**
+Após a instalação, o aplicativo abrirá no celular com uma tela informando que precisa do servidor Metro. Deixe o app aberto, volte ao terminal do computador, navegue até a raiz do projeto e inicie o bundler:
+```bash
+pnpm start
+```
+*Dica:* Quando o servidor iniciar, pressione a letra `a` no terminal. O Expo executará o `adb reverse` automaticamente, conectando seu celular ao servidor JavaScript do Mac via cabo USB!
+
 ## Lógica Destacada (Implementação do Tabuleiro Hexagonal)
 
 Tendo em vista que o React Native não oferece suporte nativo imediato para geometrias hexagonais complexas sem o uso de bibliotecas de terceiros (como SVG), a solução adotada consiste em uma matriz bidimensional padrão (11x11) associada a um deslocamento visual (`marginLeft`) aplicado estritamente às **linhas ímpares**.
